@@ -2,11 +2,16 @@
   "name": "gulp-starter",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
+    "doiuse": "doiuse --browsers 'ie >= 10, > 1%, last 2 versions' ./dist/css/styles.css",
+    "stylelint": "stylelint './src/styles/**/*.{scss, css}'",
+    "stylelint:fix": "npm run stylelint -- --fix",
     "eslint": "./node_modules/.bin/eslint '**/*.{js,ts,tsx}'",
     "eslint:fix": "npm run eslint -- --fix",
-    "format": "prettier-eslint '**/*.{js,ts,tsx}' --write"
+    "format:script": "prettier '**/*.{js,ts,tsx}' --write",
+    "format:style": "prettier '**/*.{scss,css}' --write",
+    "dev": "gulp",
+    "build": "gulp prod --production"
   },
   "husky": {
     "hooks": {
@@ -16,7 +21,12 @@
   "lint-staged": {
     "*.(js|jsx|ts|tsx)": [
       "npm run eslint:fix",
-      "npm run format",
+      "npm run format:script",
+      "git add"
+    ],
+    "*.(scss|css)": [
+      "npm run format:style",
+      "npm run stylelint:fix",
       "git add"
     ]
   },
@@ -32,12 +42,67 @@
   },
   "homepage": "https://github.com/intsitesdotru/gulp-starter#readme",
   "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/register": "^7.7.0",
+    "babel-eslint": "^10.0.3",
+    "browser-sync": "^2.26.7",
+    "del": "^5.1.0",
+    "doiuse": "^4.2.0",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-debug": "^4.0.0",
+    "gulp-eslint": "^6.0.0",
+    "gulp-file-include": "^2.1.1",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^6.2.0",
+    "gulp-load-plugins": "^2.0.1",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
     "husky": "^3.1.0",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-zopfli": "^6.0.0",
     "lint-staged": "^9.4.3",
     "prettier-eslint": "^9.0.1",
-    "prettier-eslint-cli": "^5.0.0"
+    "prettier-eslint-cli": "^5.0.0",
+    "require-dir": "^1.2.0",
+    "ssri": "^7.1.0",
+    "stream-combiner2": "^1.1.1",
+    "stylelint": "^12.0.0",
+    "stylelint-at-rule-no-children": "^0.3.1",
+    "stylelint-config-prettier": "^7.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.2.0",
+    "stylelint-order": "^3.1.1",
+    "yargs": "^15.0.2"
+  },
+  "configs": {
+    "directories": {
+      "archive": "archive",
+      "dist": "dist",
+      "src": "src",
+      "js": "js",
+      "styles": "styles",
+      "assets": "assets",
+      "views": "views",
+      "images": "images",
+      "fonts": "fonts"
+    }
+  },
+  "dependencies": {
+    "jquery": "^3.4.1"
   }
 }

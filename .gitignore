@@ -12,4 +12,5 @@ Thumbs.db
 _config.yml
 node_modules
 dist
+tmp
 yarn.lock

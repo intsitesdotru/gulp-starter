@@ -1,0 +1,7 @@
+/.git
+/.vscode
+/.idea
+dist
+assets
+tmp
+node_modules
