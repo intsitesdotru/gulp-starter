@@ -1,5 +1,8 @@
+@import 'node_modules/normalize.css/normalize';
+@import 'bootstrap-custom/bootstrap-custom';
 @import 'variables';
-
-body {
-  background-color: $bg-body;
-}
+@import 'functions';
+@import 'mixins';
+@import 'helpers';
+@import 'common';
+@import '../components/header/header';

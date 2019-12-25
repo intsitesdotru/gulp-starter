@@ -1,0 +1,18 @@
+@import 'variables';
+@import 'functions';
+
+@mixin fluidFontSize($f-min, $f-max, $w-min: $screen-xs, $w-max: $screen-lg, $fallback: false) {
+  font-size: $f-min;
+
+  @media (min-width: $w-min) {
+    @if ($fallback) {
+      font-size: $fallback;
+    }
+
+    font-size: calcFluidSize($f-min, $f-max, $w-min, $w-max, px);
+  }
+
+  @media (min-width: $w-max) {
+    font-size: $f-max;
+  }
+}

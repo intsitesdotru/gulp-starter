@@ -19,38 +19,38 @@ const dirs = pkg.configs.directories;
 
 const prod = !!yargs.argv.production;
 
-gulp.task('scripts', () =>
-  gulp
-    .src(`${dirs.src}/${dirs.js}/**/*.js`)
-    .pipe(gulpIf(!prod, sourcemaps.init()))
-    .pipe(babel())
-    .pipe(concat('scripts.js'))
-    .pipe(gulpIf(prod, uglify()))
-    .pipe(gulpIf(!prod, sourcemaps.write()))
-    .pipe(gulp.dest(`${dirs.dist}/${dirs.js}`))
-    .pipe(
-      debug({
-        title: 'JS files'
-      })
-    )
-    .on('end', browsersync.reload)
-);
+gulp.task('scripts', () => gulp
+  .src([
+    // './node_modules/bootstrap/js/dist/util.js',
+    // './node_modules/bootstrap/js/dist/collapse.js',
+    `${dirs.src}/${dirs.js}/**/*.js`,
+  ])
+  .pipe(gulpIf(!prod, sourcemaps.init()))
+  .pipe(babel())
+  .pipe(concat('scripts.js'))
+  .pipe(gulpIf(prod, uglify()))
+  .pipe(gulpIf(!prod, sourcemaps.write()))
+  .pipe(gulp.dest(`${dirs.dist}/${dirs.js}`))
+  .pipe(
+    debug({
+      title: 'JS files',
+    }),
+  )
+  .on('end', browsersync.reload));
 
-gulp.task('lint:scripts', () =>
-  gulp
-    .src(`${dirs.src}/${dirs.js}/*.js`)
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
-    .on(
-      'error',
-      notify.onError(err => ({
-        title: 'ESLint errors',
-        message: err,
-        sound: 'Beep'
-      }))
-    )
-);
+gulp.task('lint:scripts', () => gulp
+  .src(`${dirs.src}/${dirs.js}/*.js`)
+  .pipe(eslint())
+  .pipe(eslint.format())
+  .pipe(eslint.failAfterError())
+  .on(
+    'error',
+    notify.onError((err) => ({
+      title: 'ESLint errors',
+      message: err,
+      sound: 'Beep',
+    })),
+  ));
 
 /*
 gulp.task("lint:scripts", () => {

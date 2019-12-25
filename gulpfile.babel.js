@@ -13,8 +13,8 @@ export const prod = gulp.series(
     gulp.series('lint:scripts', 'scripts'),
     'images',
     'assets',
-    'fonts'
-  ])
+    'fonts',
+  ]),
 );
 
 export const development = gulp.series(
@@ -26,9 +26,9 @@ export const development = gulp.series(
     gulp.series('lint:scripts', 'scripts'),
     'images',
     'assets',
-    'fonts'
+    'fonts',
   ]),
-  gulp.parallel('serve')
+  gulp.parallel('serve'),
 );
 
 export default development;
