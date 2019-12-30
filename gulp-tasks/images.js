@@ -4,7 +4,6 @@ import imagemin from 'gulp-imagemin';
 import imageminPngquant from 'imagemin-pngquant';
 import imageminZopfli from 'imagemin-zopfli';
 import imageminMozjpeg from 'imagemin-mozjpeg';
-import imageminGiflossy from 'imagemin-giflossy';
 import debug from 'gulp-debug';
 import browsersync from 'browser-sync';
 import yargs from 'yargs';
@@ -22,11 +21,6 @@ gulp.task('images', () => gulp
     gulpif(
       production,
       imagemin([
-        imageminGiflossy({
-          optimizationLevel: 3,
-          optimize: 3,
-          lossy: 2,
-        }),
         imageminPngquant({
           speed: 5,
           quality: [0.6, 0.8],

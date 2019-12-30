@@ -110,7 +110,8 @@
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "imagemin-giflossy": "^5.1.10",
+    "gulp-responsive": "^3.0.1",
+    "gulp-webp": "^4.0.1",
     "jquery": "^3.4.1",
     "normalize.css": "^8.0.1"
   }
