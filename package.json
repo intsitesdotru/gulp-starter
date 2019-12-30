@@ -110,6 +110,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
+    "imagemin-giflossy": "^5.1.10",
     "jquery": "^3.4.1",
     "normalize.css": "^8.0.1"
   }
