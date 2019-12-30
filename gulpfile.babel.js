@@ -12,6 +12,7 @@ export const prod = gulp.series(
     'copy:jquery',
     gulp.series('lint:scripts', 'scripts'),
     'images',
+    'webp',
     'assets',
     'fonts',
   ]),
@@ -30,5 +31,8 @@ export const development = gulp.series(
   ]),
   gulp.parallel('serve'),
 );
+
+export const images = gulp.series('images');
+export const webp = gulp.series('webp');
 
 export default development;
