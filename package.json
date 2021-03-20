@@ -86,7 +86,7 @@
     "prettier-eslint": "^9.0.1",
     "prettier-eslint-cli": "^5.0.0",
     "require-dir": "^1.2.0",
-    "ssri": "^7.1.0",
+    "ssri": "^8.0.1",
     "stream-combiner2": "^1.1.1",
     "stylelint": "^12.0.0",
     "stylelint-at-rule-no-children": "^0.3.1",
